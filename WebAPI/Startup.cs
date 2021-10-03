@@ -51,10 +51,10 @@ namespace WebAPI
             services.AddSingleton<INoticia, RepositorioNoticia>();
             services.AddSingleton<IUsuario, RepositorioUsuario>();
 
-            // SERVIÇO DOMINIO
+            // SERVIÃ‡O DOMINIO
             services.AddSingleton<IServicoNoticia, ServicoNoticia>();
 
-            // INTERFACE APLICAÇÃO
+            // INTERFACE APLICAÃ‡ÃƒO
             services.AddSingleton<IAplicacaoNoticia, AplicacaoNoticia>();
             services.AddSingleton<IAplicacaoUsuario, AplicacaoUsuario>();
 
@@ -101,10 +101,20 @@ namespace WebAPI
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
 
-            var urlCliente1 = "https://dominiodocliente.com.br";
-            var urlCliente2 = "https://dominiodocliente2.com.br";
+            
+            //var urlCliente1 = "https://dominiodocliente.com.br";
+            //var urlCliente2 = "https://dominiodocliente2.com.br";
 
-            app.UseCors(b => b.WithOrigins(urlCliente1, urlCliente2));
+            //app.UseCors(b => b.WithOrigins(urlCliente1, urlCliente2));
+
+
+            #region Novo
+            var urlCliente3 = "http://localhost:4200";
+            app.UseCors(x => x
+     .AllowAnyOrigin()
+     .AllowAnyMethod()
+     .AllowAnyHeader().WithOrigins(urlCliente3));
+            #endregion
 
             if (env.IsDevelopment())
             {
